@@ -1,15 +1,18 @@
 package jp.co.devhogata.alertinfo;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 
 public class AlertInfo extends ActionBarActivity {
+    private static final String TAG = "activity_alert_info";
 
     // クラス変数
     private ActionBarDrawerToggle mDrawerToggle = null;
@@ -25,11 +28,21 @@ public class AlertInfo extends ActionBarActivity {
                 mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
             // ナビゲーションドロワーオープン
             @Override public void onDrawerOpened(View drawerView) {
-
+                super.onDrawerOpened(drawerView);
+                Log.i(TAG, "open!!");
             }
 
         };
+
+        // ナビゲーションドロワーのリスナー設定
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        // アプリケーションアイコン制御有効化
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,6 +53,11 @@ public class AlertInfo extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // ActionBarDrawerToggleにandroid.id.home(up ナビゲーション)を渡す。
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -51,5 +69,19 @@ public class AlertInfo extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // アクティビティとナビゲーションドロワーの状態を同期
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // デバイスの状態変化をナビゲーションドロワーに通知
+        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 }
