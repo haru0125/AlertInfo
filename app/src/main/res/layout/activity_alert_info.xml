@@ -18,9 +18,33 @@
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="ナビゲーション領域"
-            android:textSize="20sp"/>
-
+            android:layout_height="32dp"
+            android:text="アプリへの意見"
+            android:clickable="true"
+            android:onClick="navimail"
+            android:textSize="16sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:text="アプリを評価"
+            android:clickable="true"
+            android:onClick="navireview"
+            android:textSize="16sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="おすすめアプリ"
+            android:clickable="true"
+            android:onClick="naviappli"
+            android:textSize="16sp"/>
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:text="通知後削除"
+            android:textOff="する"
+            android:textOn="しない"
+            android:singleLine="false"
+            android:id="@+id/switch1"
+            android:textSize="16sp"/>
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

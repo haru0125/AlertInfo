@@ -5,19 +5,25 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 
-public class AlertInfo extends ActionBarActivity {
+public class AlertInfo extends AppCompatActivity {
     private static final String TAG = "activity_alert_info";
 
     // クラス変数
     private ActionBarDrawerToggle mDrawerToggle = null;
     private DrawerLayout mDrawerLayout = null;
 
+    /**
+     * アクティビティ作成時
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,11 @@ public class AlertInfo extends ActionBarActivity {
                 super.onDrawerOpened(drawerView);
                 Log.i(TAG, "open!!");
             }
+            // クローズ
+            @Override public void onDrawerClosed(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                Log.i(TAG, "close!!");
+            }
 
         };
 
@@ -43,14 +54,23 @@ public class AlertInfo extends ActionBarActivity {
     }
 
 
-
+    /**
+     * メニュー作成イベント。onResumeの後あたりに呼ばれる
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // メニューをセットする
         getMenuInflater().inflate(R.menu.menu_alert_info, menu);
         return true;
     }
 
+    /**
+     * メニュー選択時のイベント
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // ActionBarDrawerToggleにandroid.id.home(up ナビゲーション)を渡す。
@@ -84,4 +104,20 @@ public class AlertInfo extends ActionBarActivity {
         // デバイスの状態変化をナビゲーションドロワーに通知
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
+    // アクティビティ
+    public void navimail(View view) {
+        Toast.makeText(getApplicationContext(), "Test navimail!", Toast.LENGTH_SHORT).show();
+    }
+
+    // アクティビティ
+    public void navireview(View view) {
+        Toast.makeText(getApplicationContext(), "Test navireview!", Toast.LENGTH_SHORT).show();
+    }
+
+    // アクティビティ
+    public void naviappli(View view) {
+        Toast.makeText(getApplicationContext(), "Test naviappli!", Toast.LENGTH_SHORT).show();
+    }
+
 }
