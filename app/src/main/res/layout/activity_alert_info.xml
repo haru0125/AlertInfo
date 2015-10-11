@@ -7,7 +7,14 @@
         android:id="@+id/layout_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" />
+        android:orientation="vertical" >
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progressDrawable="@drawable/progress"
+            android:thumb="@drawable/thumb" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/navigation_drawer"
