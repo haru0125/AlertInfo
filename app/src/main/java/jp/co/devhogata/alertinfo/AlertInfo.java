@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -94,6 +95,12 @@ public class AlertInfo extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // メニューをセットする
         getMenuInflater().inflate(R.menu.menu_alert_info, menu);
+
+        // メニュー追加
+        MenuItem item = menu.add(Menu.NONE, Menu.FIRST, 100, "test");
+        item.setIcon(R.drawable.ic_add_alert_white_24dp);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
         return true;
     }
 
@@ -112,12 +119,7 @@ public class AlertInfo extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        int id = item.getItemId();
 
         return super.onOptionsItemSelected(item);
     }
