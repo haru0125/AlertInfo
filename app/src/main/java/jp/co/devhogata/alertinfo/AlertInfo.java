@@ -1,5 +1,6 @@
 package jp.co.devhogata.alertinfo;
 
+import android.app.ActionBar;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -10,6 +11,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -19,6 +22,8 @@ public class AlertInfo extends AppCompatActivity {
     // クラス変数
     private ActionBarDrawerToggle mDrawerToggle = null;
     private DrawerLayout mDrawerLayout = null;
+    private SeekBar seekBar;
+    private TextView txtView;
 
     /**
      * アクティビティ作成時
@@ -29,6 +34,9 @@ public class AlertInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alert_info);
 
+        /**
+         * ナビゲーションドロワー関連
+         */
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this,
                 mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
@@ -44,9 +52,32 @@ public class AlertInfo extends AppCompatActivity {
             }
 
         };
-
         // ナビゲーションドロワーのリスナー設定
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        /**
+         * シークバー関連
+         */
+        seekBar = (SeekBar)findViewById(R.id.seek);
+        txtView = (TextView)findViewById(R.id.textView);
+        txtView.setText(timeDispChg(seekBar.getProgress()) + "後に通知");
+
+        seekBar.setOnSeekBarChangeListener(
+                new SeekBar.OnSeekBarChangeListener() {
+                    public void onProgressChanged(SeekBar seekBar,
+                                                  int progress, boolean fromUser) {
+                        // ツマミをドラッグしたときに呼ばれる
+                        txtView.setText(timeDispChg(progress) + "後に通知");
+                    }
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                        // ツマミに触れたときに呼ばれる
+                    }
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        // ツマミを離したときに呼ばれる
+                    }
+                }
+        );
+
 
         // アプリケーションアイコン制御有効化
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -118,6 +149,15 @@ public class AlertInfo extends AppCompatActivity {
     // アクティビティ
     public void naviappli(View view) {
         Toast.makeText(getApplicationContext(), "Test naviappli!", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * ここからクラス処理用のメソッド
+     */
+    private String timeDispChg(int progress) {
+        int hour = progress / 60;
+        int min = progress % 60;
+        return hour + "時間" + min + "分";
     }
 
 }
