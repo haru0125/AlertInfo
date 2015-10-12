@@ -3,6 +3,7 @@ package jp.co.devhogata.alertinfo;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -16,6 +17,7 @@ import android.view.Window;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import net.nend.android.NendAdView;
 
 
 public class AlertInfo extends AppCompatActivity {
@@ -35,6 +37,9 @@ public class AlertInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alert_info);
+
+        // nend
+//        NendAdView nendAdView = new NendAdView(getApplicationContext(), 3174, "c5cb8bc474345961c6e7a9778c947957ed8e1e4f");
 
         /**
          * ナビゲーションドロワー関連
@@ -147,14 +152,18 @@ public class AlertInfo extends AppCompatActivity {
 
     // アクティビティ
     public void navimail(View view) {
-//        Toast.makeText(getApplicationContext(), "Test navimail!", Toast.LENGTH_SHORT).show();
+        // WebViewで起動する
         Intent intent = new Intent(this, WebViewActivity.class);
+        intent.putExtra("URL", "http://goo.gl/forms/BZczkBawYM");
         startActivity(intent);
     }
 
     // アクティビティ
     public void navireview(View view) {
-        Toast.makeText(getApplicationContext(), "Test navireview!", Toast.LENGTH_SHORT).show();
+        // Webブラウザで起動する
+        Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=jp.co.yahoo.android.yjtop&hl=ja");
+        Intent i = new Intent(Intent.ACTION_VIEW,uri);
+        startActivity(i);
     }
 
     // アクティビティ

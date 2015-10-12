@@ -3,46 +3,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/layout_main"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/FrameLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        tools:context=".MainActivity" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="xx:xx"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:id="@+id/textView" />
-
-        <SeekBar
-            android:id="@+id/seek"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:progressDrawable="@drawable/progress"
-            android:thumb="@drawable/thumb"
-            android:progress="1"
-            android:max="1440"
-            />
-
-        <EditText
+        <LinearLayout
+            android:id="@+id/layout_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text=""
-            android:id="@+id/mainTextView"
-            android:background="#F8F8FF"
-            android:paddingTop="20dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:hint="通知内容を入力して右上の＋で登録"
-            android:gravity="top"
-        />
+            android:orientation="vertical" >
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="xx:xx"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:id="@+id/textView" />
+
+            <SeekBar
+                android:id="@+id/seek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progressDrawable="@drawable/progress"
+                android:thumb="@drawable/thumb"
+                android:progress="1"
+                android:max="1440"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:id="@+id/mainTextView"
+                android:background="#F8F8FF"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:hint="通知内容を入力して右上の＋で登録"
+                android:gravity="top" />
+        </LinearLayout>
+        <net.nend.android.NendAdView
+            android:id="@+id/nend"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|center_horizontal"
+            NendApiKey="c5cb8bc474345961c6e7a9778c947957ed8e1e4f"
+            NendSpotId="3174" />
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/navigation_drawer"

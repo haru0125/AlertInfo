@@ -1,11 +1,13 @@
 package jp.co.devhogata.alertinfo;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -49,13 +51,15 @@ public class WebViewActivity extends AppCompatActivity {
         });
 
         // load
-        webview.loadUrl("http://goo.gl/forms/BZczkBawYM");
+        Intent intent = getIntent();
+        String url = intent.getStringExtra("URL");
+        webview.loadUrl(url);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // メニューの要素を追加して取得
-        MenuItem actionItem = menu.add("Action Button Help Icon");
+        MenuItem actionItem = menu.add(Menu.NONE, Menu.FIRST, 100, "Action Button Help Icon");
         // アイコンを設定
         actionItem.setIcon(R.drawable.ic_close_white_24dp);
 
@@ -63,5 +67,18 @@ public class WebViewActivity extends AppCompatActivity {
         actionItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case Menu.FIRST:
+                Log.i(TAG, "閉じるボタン押下");
+                this.finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
