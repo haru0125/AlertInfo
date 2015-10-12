@@ -1,6 +1,7 @@
 package jp.co.devhogata.alertinfo;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -146,7 +147,9 @@ public class AlertInfo extends AppCompatActivity {
 
     // アクティビティ
     public void navimail(View view) {
-        Toast.makeText(getApplicationContext(), "Test navimail!", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "Test navimail!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, WebViewActivity.class);
+        startActivity(intent);
     }
 
     // アクティビティ
