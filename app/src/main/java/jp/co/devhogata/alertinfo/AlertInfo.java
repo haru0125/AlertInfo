@@ -31,7 +31,7 @@ public class AlertInfo extends AppCompatActivity {
 
     /**
      * アクティビティ作成時
-     * @param savedInstanceState
+     * @param savedInstanceState comment
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,15 +87,17 @@ public class AlertInfo extends AppCompatActivity {
 
 
         // アプリケーションアイコン制御有効化
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
     }
 
 
     /**
      * メニュー作成イベント。onResumeの後あたりに呼ばれる
-     * @param menu
-     * @return
+     * @param menu comment
+     * @return comment
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,8 +114,8 @@ public class AlertInfo extends AppCompatActivity {
 
     /**
      * メニュー選択時のイベント
-     * @param item
-     * @return
+     * @param item comment
+     * @return comment
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -161,6 +163,7 @@ public class AlertInfo extends AppCompatActivity {
     // アクティビティ
     public void navireview(View view) {
         // Webブラウザで起動する
+        // TODO:URLが決まったら差し替える
         Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=jp.co.yahoo.android.yjtop&hl=ja");
         Intent i = new Intent(Intent.ACTION_VIEW,uri);
         startActivity(i);
