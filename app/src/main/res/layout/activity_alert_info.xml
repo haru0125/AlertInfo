@@ -35,6 +35,9 @@
             android:id="@+id/mainTextView"
             android:background="#F8F8FF"
             android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:hint="通知内容を入力して右上の＋で登録"
             android:gravity="top"
         />
@@ -43,40 +46,48 @@
 
     <LinearLayout
         android:id="@+id/navigation_drawer"
-        android:layout_width="240dp"
+        android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"
         android:background="#F8F8FF"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="32dp"
+            android:layout_height="wrap_content"
             android:text="アプリへの意見"
             android:clickable="true"
             android:onClick="navimail"
-            android:textSize="16sp"/>
+            android:textSize="18sp"
+            android:padding="12dp"
+            />
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="32dp"
+            android:layout_height="wrap_content"
             android:text="アプリを評価"
             android:clickable="true"
             android:onClick="navireview"
-            android:textSize="16sp"/>
+            android:textSize="18sp"
+            android:padding="12dp"
+            />
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:text="おすすめアプリ"
             android:clickable="true"
             android:onClick="naviappli"
-            android:textSize="16sp"/>
+            android:textSize="18sp"
+            android:padding="12dp"
+            />
         <Switch
             android:layout_width="match_parent"
-            android:layout_height="32dp"
-            android:text="通知後削除"
+            android:layout_height="wrap_content"
+            android:text="Seekリセット"
             android:textOff="する"
             android:textOn="しない"
             android:singleLine="false"
             android:id="@+id/switch1"
-            android:textSize="16sp"/>
+            android:textSize="18sp"
+            android:padding="12dp"
+            />
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

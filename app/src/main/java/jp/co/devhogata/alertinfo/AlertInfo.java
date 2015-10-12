@@ -119,7 +119,13 @@ public class AlertInfo extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
+        int id = item.getItemId();
+
+        switch (id) {
+            case Menu.FIRST:
+                Toast.makeText(this, "通知メモが登録されました", Toast.LENGTH_SHORT).show();
+                return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
