@@ -1,10 +1,13 @@
 package jp.co.devhogata.alertinfo;
 
 import android.app.ActionBar;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -134,7 +137,8 @@ public class AlertInfo extends AppCompatActivity {
 
         switch (id) {
             case Menu.FIRST:
-                Toast.makeText(this, "通知メモが登録されました", Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "notification add");
+                notificationAdd();
                 return true;
         }
 
@@ -184,6 +188,23 @@ public class AlertInfo extends AppCompatActivity {
         int hour = progress / 60;
         int min = progress % 60;
         return hour + "時間" + min + "分";
+    }
+
+    private Boolean notificationAdd() {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+
+        builder.setSmallIcon(R.drawable.ic_notification);
+        builder.setTicker("ステータスバー上の表示テキスト");
+        builder.setContentTitle("タイトルtitle");
+        builder.setContentText("通知情報のテキスト");
+        builder.setContentInfo("通知情報");
+        builder.setAutoCancel(true);
+        builder.setWhen(System.currentTimeMillis() + (seekBar.getProgress() * 10000));
+        builder.setLights(Color.WHITE, 1000, 500);
+//        seekBar.getProgress()
+        NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(1, builder.build());
+        return true;
     }
 
 }
