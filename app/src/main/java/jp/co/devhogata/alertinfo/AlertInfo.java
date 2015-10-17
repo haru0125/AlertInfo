@@ -1,28 +1,21 @@
 package jp.co.devhogata.alertinfo;
 
-import android.app.ActionBar;
-import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import net.nend.android.NendAdView;
-
 
 public class AlertInfo extends AppCompatActivity {
     private static final String TAG = "activity_alert_info";
@@ -32,6 +25,7 @@ public class AlertInfo extends AppCompatActivity {
     private DrawerLayout mDrawerLayout = null;
     private SeekBar seekBar;
     private TextView txtView;
+    private int infohour;
 
     /**
      * アクティビティ作成時
@@ -46,6 +40,9 @@ public class AlertInfo extends AppCompatActivity {
 
         // nend
 //        NendAdView nendAdView = new NendAdView(getApplicationContext(), 3174, "c5cb8bc474345961c6e7a9778c947957ed8e1e4f");
+
+        // 初期化処理
+        infohour = 1;
 
         /**
          * ナビゲーションドロワー関連
@@ -81,6 +78,7 @@ public class AlertInfo extends AppCompatActivity {
                                                   int progress, boolean fromUser) {
                         // ツマミをドラッグしたときに呼ばれる
                         txtView.setText(timeDispChg(progress) + "後に通知");
+                        infohour = progress;
                     }
                     public void onStartTrackingTouch(SeekBar seekBar) {
                         // ツマミに触れたときに呼ばれる
@@ -138,8 +136,8 @@ public class AlertInfo extends AppCompatActivity {
         switch (id) {
             case Menu.FIRST:
                 Log.i(TAG, "notification add");
-//                notificationAdd();
-                NotificationUtil.setLocalNotification(getApplicationContext(), "test message", 12345, 60);
+                EditText textview = (EditText)findViewById(R.id.mainTextView);
+                NotificationUtil.setLocalNotification(getApplicationContext(), textview.getText().toString(), 12345, infohour);
                 return true;
         }
 
@@ -188,22 +186,4 @@ public class AlertInfo extends AppCompatActivity {
     private String timeDispChg(int progress) {;
         return progress + "時間";
     }
-
-    private Boolean notificationAdd() {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-
-        builder.setSmallIcon(R.drawable.ic_notification);
-        builder.setTicker("ステータスバー上の表示テキスト");
-        builder.setContentTitle("タイトルtitle");
-        builder.setContentText("通知情報のテキスト");
-        builder.setContentInfo("通知情報");
-        builder.setAutoCancel(true);
-        builder.setWhen(System.currentTimeMillis() + (seekBar.getProgress() * 10000));
-        builder.setLights(Color.WHITE, 1000, 500);
-//        seekBar.getProgress()
-        NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(1, builder.build());
-        return true;
-    }
-
 }
