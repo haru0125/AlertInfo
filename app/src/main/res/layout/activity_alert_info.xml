@@ -104,5 +104,17 @@
             android:textSize="18sp"
             android:padding="12dp"
             />
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="バイブレーション"
+            android:textOff="しない"
+            android:textOn="する"
+            android:checked="true"
+            android:singleLine="false"
+            android:id="@+id/switch2"
+            android:textSize="18sp"
+            android:padding="12dp"
+            />
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>
