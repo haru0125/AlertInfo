@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
 
 public class NotificationReceiver extends BroadcastReceiver {
 
@@ -25,10 +24,6 @@ public class NotificationReceiver extends BroadcastReceiver {
         builder.setLights(Color.WHITE, 1000, 500);
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
         notificationManager.notify(1, builder.build());
-
-        // Toast Debug
-//        String message = intent.getStringExtra("MESSAGE");
-//        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
 
         // Log
         Log.i("NotificationReceiver", "onReceive end");
