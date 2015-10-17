@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -89,6 +90,19 @@ public class AlertInfo extends AppCompatActivity {
                 }
         );
 
+        /**
+         * Edittext処理
+         */
+        EditText et = (EditText) findViewById(R.id.mainTextView);
+        et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                // EditTextのフォーカスが外れた場合
+                if (hasFocus == false) {
+                    // 外れたときの処理を記載する
+                }
+            }
+        });
 
         // アプリケーションアイコン制御有効化
         if (getSupportActionBar() != null) {
@@ -138,6 +152,14 @@ public class AlertInfo extends AppCompatActivity {
                 Log.i(TAG, "notification add");
                 EditText textview = (EditText)findViewById(R.id.mainTextView);
                 NotificationUtil.setLocalNotification(getApplicationContext(), textview.getText().toString(), 12345, infohour);
+
+                // ソフトキーボードを隠す
+                InputMethodManager imm = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                // Toastメッセージ表示
+                Toast.makeText(this, "通知予約が完了しました", Toast.LENGTH_SHORT).show();
+
                 return true;
         }
 

@@ -15,7 +15,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         // 通知処理
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
         builder.setSmallIcon(R.drawable.ic_notification);
-        builder.setTicker("AlertInfo");
+        builder.setTicker(intent.getStringExtra("MESSAGE"));
         builder.setContentTitle(intent.getStringExtra("MESSAGE"));
         builder.setContentText("AlertInfoからの通知メッセージです");
         builder.setContentInfo("通知情報");
