@@ -32,7 +32,9 @@
                 android:progressDrawable="@drawable/progress"
                 android:thumb="@drawable/thumb"
                 android:progress="1"
-                android:max="1440"
+                android:max="24"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 />
 
             <EditText

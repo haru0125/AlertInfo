@@ -138,7 +138,8 @@ public class AlertInfo extends AppCompatActivity {
         switch (id) {
             case Menu.FIRST:
                 Log.i(TAG, "notification add");
-                notificationAdd();
+//                notificationAdd();
+                NotificationUtil.setLocalNotification(getApplicationContext(), "test message", 12345, 60);
                 return true;
         }
 
@@ -184,10 +185,8 @@ public class AlertInfo extends AppCompatActivity {
     /**
      * ここからクラス処理用のメソッド
      */
-    private String timeDispChg(int progress) {
-        int hour = progress / 60;
-        int min = progress % 60;
-        return hour + "時間" + min + "分";
+    private String timeDispChg(int progress) {;
+        return progress + "時間";
     }
 
     private Boolean notificationAdd() {
