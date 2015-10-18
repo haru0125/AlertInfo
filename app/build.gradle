@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "jp.co.alertinfo"
+        applicationId "jp.co.harupark.alertinfo"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
