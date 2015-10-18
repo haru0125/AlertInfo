@@ -1,5 +1,6 @@
 package jp.co.devhogata.alertinfo;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -17,11 +18,13 @@ public class NotificationReceiver extends BroadcastReceiver {
         builder.setSmallIcon(R.drawable.ic_notification);
         builder.setTicker(intent.getStringExtra("MESSAGE"));
         builder.setContentTitle(intent.getStringExtra("MESSAGE"));
-        builder.setContentText("AlertInfoからの通知メッセージです");
+        builder.setContentText("簡単通知からの通知メッセージです");
         builder.setContentInfo("通知情報");
         builder.setAutoCancel(true);
         builder.setWhen(System.currentTimeMillis());
-        builder.setLights(Color.WHITE, 1000, 500);
+        builder.setDefaults(Notification.DEFAULT_SOUND
+                | Notification.DEFAULT_VIBRATE
+                | Notification.DEFAULT_LIGHTS);
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
         notificationManager.notify(1, builder.build());
 
