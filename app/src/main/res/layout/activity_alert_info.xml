@@ -96,17 +96,6 @@
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="通知後リセット"
-            android:textOff="しない"
-            android:textOn="する"
-            android:singleLine="false"
-            android:id="@+id/switch_reset"
-            android:textSize="18sp"
-            android:padding="12dp"
-            />
-        <Switch
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="サウンド"
             android:textOff="なし"
             android:textOn="あり"

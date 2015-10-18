@@ -9,9 +9,10 @@ import java.util.Calendar;
 
 public class NotificationUtil {
 
-    public static void setLocalNotification(Context context, String message, int requestCode, int interval){
+    public static void setLocalNotification(Context context, String message,  int notificationOption, int requestCode, int interval){
         Intent intent = new Intent(context, NotificationReceiver.class);
         intent.putExtra("MESSAGE", message);
+        intent.putExtra("OPTION", notificationOption);
         PendingIntent sender = PendingIntent.getBroadcast(context,  requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Calendar calendar = Calendar.getInstance();

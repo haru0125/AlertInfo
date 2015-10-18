@@ -1,5 +1,6 @@
 package jp.co.devhogata.alertinfo;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -15,6 +16,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -151,7 +153,7 @@ public class AlertInfo extends AppCompatActivity {
             case Menu.FIRST:
                 Log.i(TAG, "notification add");
                 EditText textview = (EditText)findViewById(R.id.mainTextView);
-                NotificationUtil.setLocalNotification(getApplicationContext(), textview.getText().toString(), 12345, infohour);
+                NotificationUtil.setLocalNotification(getApplicationContext(), textview.getText().toString(), switchStatus(), 12345, infohour);
 
                 // ソフトキーボードを隠す
                 InputMethodManager imm = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
@@ -205,7 +207,20 @@ public class AlertInfo extends AppCompatActivity {
     /**
      * ここからクラス処理用のメソッド
      */
-    private String timeDispChg(int progress) {;
+    private String timeDispChg(int progress) {
         return progress + "時間";
+    }
+
+    private int switchStatus() {
+        int ret  = Notification.DEFAULT_LIGHTS;
+        Switch sw_sound = (Switch)findViewById(R.id.switch_sound);
+        if (sw_sound.isChecked()) {
+            ret += Notification.DEFAULT_SOUND;
+        }
+        Switch sw_vib = (Switch)findViewById(R.id.switch_vibrate);
+        if (sw_vib.isChecked()) {
+            ret += Notification.DEFAULT_VIBRATE;
+        }
+        return ret;
     }
 }

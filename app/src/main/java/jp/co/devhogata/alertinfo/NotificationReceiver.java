@@ -5,7 +5,6 @@ import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -22,15 +21,13 @@ public class NotificationReceiver extends BroadcastReceiver {
         builder.setContentInfo("通知情報");
         builder.setAutoCancel(true);
         builder.setWhen(System.currentTimeMillis());
-        builder.setDefaults(Notification.DEFAULT_SOUND
-                | Notification.DEFAULT_VIBRATE
-                | Notification.DEFAULT_LIGHTS);
+        int option = intent.getIntExtra("OPTION", 0);
+        builder.setDefaults(option);
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
         notificationManager.notify(1, builder.build());
 
         // Log
         Log.i("NotificationReceiver", "onReceive end");
-
     }
 
 }
