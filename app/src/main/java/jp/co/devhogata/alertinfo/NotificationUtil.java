@@ -13,6 +13,7 @@ public class NotificationUtil {
         Intent intent = new Intent(context, NotificationReceiver.class);
         intent.putExtra("MESSAGE", message);
         intent.putExtra("OPTION", notificationOption);
+        intent.setType("TYPE" + System.currentTimeMillis());
         PendingIntent sender = PendingIntent.getBroadcast(context,  requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Calendar calendar = Calendar.getInstance();

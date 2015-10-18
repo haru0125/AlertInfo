@@ -24,7 +24,8 @@ public class NotificationReceiver extends BroadcastReceiver {
         int option = intent.getIntExtra("OPTION", 0);
         builder.setDefaults(option);
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
-        notificationManager.notify(1, builder.build());
+        int unixtime = (int)System.currentTimeMillis();
+        notificationManager.notify(unixtime, builder.build());
 
         // Log
         Log.i("NotificationReceiver", "onReceive end");
