@@ -6,7 +6,7 @@
     <!-- インターネット通信の許可ここまで -->
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_notification"
+        android:icon="@drawable/ic_desktop_072"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
