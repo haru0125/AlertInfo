@@ -22,8 +22,13 @@ import android.widget.Toast;
 
 import com.flurry.android.FlurryAgent;
 
+import jp.co.imobile.sdkads.android.ImobileSdkAd;
+
 public class AlertInfo extends AppCompatActivity {
     private static final String TAG = "activity_alert_info";
+    static final String IMOBILE_WALL_PID = "44822";
+    static final String IMOBILE_WALL_MID = "214330";
+    static final String IMOBILE_WALL_SID = "618476";
 
     // クラス変数
     private ActionBarDrawerToggle mDrawerToggle = null;
@@ -54,6 +59,12 @@ public class AlertInfo extends AppCompatActivity {
 
         // nend
 //        NendAdView nendAdView = new NendAdView(getApplicationContext(), 3174, "c5cb8bc474345961c6e7a9778c947957ed8e1e4f");
+
+        // imobile
+        // スポット情報を設定します
+        ImobileSdkAd.registerSpotFullScreen(this, IMOBILE_WALL_PID, IMOBILE_WALL_MID, IMOBILE_WALL_SID);
+        // 広告の取得を開始します
+        ImobileSdkAd.start(IMOBILE_WALL_SID);
 
         // 初期化処理
         infohour = 1;
@@ -224,7 +235,9 @@ public class AlertInfo extends AppCompatActivity {
 
     // アクティビティ
     public void naviappli(View view) {
-        Toast.makeText(getApplicationContext(), "Test naviappli!", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "Test naviappli!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, WallAds.class);
+        startActivity(intent);
     }
 
     /**
