@@ -20,6 +20,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.flurry.android.FlurryAgent;
+
 public class AlertInfo extends AppCompatActivity {
     private static final String TAG = "activity_alert_info";
 
@@ -37,6 +39,15 @@ public class AlertInfo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /**
+         * Flurry
+         */
+        // configure Flurry
+        FlurryAgent.setLogEnabled(false);
+        // init Flurry
+        FlurryAgent.init(this, "DNXMTBJ4SPG4Q2H7QD5D");
+
         // キーボードをクローズする
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.activity_alert_info);
@@ -111,6 +122,18 @@ public class AlertInfo extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FlurryAgent.onStartSession(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        FlurryAgent.onEndSession(this);
     }
 
 
@@ -194,7 +217,7 @@ public class AlertInfo extends AppCompatActivity {
     public void navireview(View view) {
         // Webブラウザで起動する
         // TODO:URLが決まったら差し替える
-        Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=jp.co.yahoo.android.yjtop&hl=ja");
+        Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=jp.co.harupark.alertinfo&hl=ja");
         Intent i = new Intent(Intent.ACTION_VIEW,uri);
         startActivity(i);
     }

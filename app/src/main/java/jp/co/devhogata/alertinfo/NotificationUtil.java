@@ -19,7 +19,7 @@ public class NotificationUtil {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         // TODO:あとでHOURに変更
-        calendar.add(Calendar.SECOND, interval);
+        calendar.add(Calendar.HOUR_OF_DAY, interval);
 
         AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
