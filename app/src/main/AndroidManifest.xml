@@ -29,8 +29,6 @@
             android:name=".NotificationReceiver"
             android:process=":remote" />
         <!-- Alert通知レシーバ追加ここまで -->
-        <activity android:name=".WallAds" >
-        </activity>
     </application>
 
 </manifest>

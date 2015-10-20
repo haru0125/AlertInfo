@@ -236,8 +236,15 @@ public class AlertInfo extends AppCompatActivity {
     // アクティビティ
     public void naviappli(View view) {
 //        Toast.makeText(getApplicationContext(), "Test naviappli!", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, WallAds.class);
-        startActivity(intent);
+        // 広告を表示します
+        ImobileSdkAd.showAd(this, IMOBILE_WALL_SID);
+    }
+
+    @Override
+    protected void onDestroy() {
+        //Activity廃棄時の後処理
+        ImobileSdkAd.activityDestory();
+        super.onDestroy();
     }
 
     /**
