@@ -53,8 +53,8 @@
             android:id="@+id/nend"
             android:layout_width="320dp"
             android:layout_height="50dp"
-            NendApiKey="c5cb8bc474345961c6e7a9778c947957ed8e1e4f"
-            NendSpotId="3174"
+            NendApiKey="35aa0d2de98092be9be273e6ac9e861152c795ff"
+            NendSpotId="457960"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
