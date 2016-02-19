@@ -227,7 +227,6 @@ public class AlertInfo extends AppCompatActivity {
     // アクティビティ
     public void navireview(View view) {
         // Webブラウザで起動する
-        // TODO:URLが決まったら差し替える
         Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=jp.co.harupark.alertinfo&hl=ja");
         Intent i = new Intent(Intent.ACTION_VIEW,uri);
         startActivity(i);
